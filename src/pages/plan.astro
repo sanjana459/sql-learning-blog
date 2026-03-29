@@ -2,72 +2,87 @@
 import Base from "@/layouts/Base.astro";
 
 const phase1 = [
-  { week: "Week 1", topic: "Arrays 101", status: "Completed", link: "/categories/arrays" },
-  { week: "Week 2", topic: "Array & String", status: "Upcoming", link: "" },
-  { week: "Week 3", topic: "Hash Table", status: "Upcoming", link: "" },
-  { week: "Week 4", topic: "Queue & Stack", status: "Upcoming", link: "" },
-  { week: "Week 5", topic: "Heap", status: "Upcoming", link: "" },
-  { week: "Week 6", topic: "Binary Search", status: "Upcoming", link: "" },
-  { week: "Week 7", topic: "Linked List", status: "Upcoming", link: "" },
-  { week: "Week 8", topic: "Recursion I", status: "Upcoming", link: "" },
-  { week: "Week 9", topic: "Recursion II", status: "Upcoming", link: "" },
-  { week: "Week 10", topic: "Binary Tree", status: "Upcoming", link: "" },
-  { week: "Week 11", topic: "Binary Search Tree", status: "Upcoming", link: "" },
-  { week: "Week 12", topic: "Trie", status: "Upcoming", link: "" },
-  { week: "Week 13", topic: "N-ary Tree", status: "Upcoming", link: "" },
-  { week: "Week 14", topic: "Graph (BFS/DFS)", status: "Upcoming", link: "" },
-  { week: "Week 15", topic: "Sorting & Searching", status: "Upcoming", link: "" },
-  { week: "Week 16", topic: "Dynamic Programming (Intro)", status: "Upcoming", link: "" },
-  { week: "Week 17", topic: "Backtracking (Intro)", status: "Upcoming", link: "" },
-  { week: "Week 18", topic: "Revision / Buffer", status: "Upcoming", link: "" },
+  { day: "Day 1",  topic: "What Is Data, Databases, and SQL?",              status: "Completed", link: "/day-1" },
+  { day: "Day 2",  topic: "SELECT : Reading Data From Tables",              status: "Completed", link: "/day-2" },
+  { day: "Day 3",  topic: "WHERE : Filtering Your Data",                    status: "Completed", link: "/day-3" },
+  { day: "Day 4",  topic: "String Functions, Date Functions, and CASE",     status: "Completed", link: "/day-4" },
+  { day: "Day 5",  topic: "Aggregate Functions : COUNT, SUM, AVG, MIN, MAX", status: "Completed", link: "/day-5" },
+  { day: "Day 6",  topic: "Subqueries and Nested Queries",                  status: "Completed", link: "/day-6" },
+  { day: "Day 7",  topic: "JOINs Part 1 : INNER JOIN and LEFT JOIN",        status: "Completed", link: "/day-7" },
+  { day: "Day 8",  topic: "JOINs Part 2 : RIGHT, FULL, SELF, CROSS JOIN",   status: "Completed", link: "/day-8" },
+  { day: "Day 9",  topic: "UNION, INTERSECT, EXCEPT",                       status: "Completed", link: "/day-9" },
+  { day: "Day 10", topic: "Window Functions : ROW_NUMBER, RANK, LAG, LEAD", status: "Completed", link: "/day-10" },
 ];
 
 const phase2 = [
-  { week: "Week 19", topic: "Two Pointers / Sliding Window", status: "Upcoming", link: "" },
-  { week: "Week 20", topic: "Hashing / Prefix Sum", status: "Upcoming", link: "" },
-  { week: "Week 21", topic: "Linked List / Stack-Queue Advanced", status: "Upcoming", link: "" },
-  { week: "Week 22", topic: "Binary Tree / BST", status: "Upcoming", link: "" },
-  { week: "Week 23", topic: "Heap / Priority Queue", status: "Upcoming", link: "" },
-  { week: "Week 24", topic: "Graphs (DFS/BFS, Shortest Paths)", status: "Upcoming", link: "" },
-  { week: "Week 25", topic: "Backtracking", status: "Upcoming", link: "" },
-  { week: "Week 26", topic: "Dynamic Programming", status: "Upcoming", link: "" },
+  { day: "Day 11", topic: "CTEs : Common Table Expressions",                status: "Completed", link: "/day-11" },
+  { day: "Day 12", topic: "Recursive CTEs : Hierarchies and Sequences",     status: "Completed", link: "/day-12" },
+  { day: "Day 13", topic: "NULL Handling : COALESCE, NULLIF, IFNULL",       status: "Completed", link: "/day-13" },
+  { day: "Day 14", topic: "Advanced Window Functions : NTILE, FIRST_VALUE, PERCENT_RANK", status: "Completed", link: "/day-14" },
+  { day: "Day 15", topic: "Writing Data : INSERT, UPDATE, DELETE, UPSERT",  status: "Completed", link: "/day-15" },
+  { day: "Day 16", topic: "Table Design : Data Types, Keys, Constraints",   status: "Completed", link: "/day-16" },
+  { day: "Day 17", topic: "Indexes : What They Are and When to Use Them",   status: "Completed", link: "/day-17" },
+  { day: "Day 18", topic: "EXPLAIN and Query Optimization",                 status: "Completed", link: "/day-18" },
+  { day: "Day 19", topic: "Advanced Patterns : Pivoting, Gaps and Islands", status: "Completed", link: "/day-19" },
+  { day: "Day 20", topic: "Full Review : 20-Query Challenge",               status: "Completed", link: "/day-20" },
+];
+
+const phase3 = [
+  { day: "Day 21", topic: "LeetCode Easy Blitz : Clear the Backlog",        status: "Completed", link: "/day-21" },
+  { day: "Day 22", topic: "LeetCode Medium : DE Interview Problems",        status: "Completed", link: "/day-22" },
+  { day: "Day 23", topic: "LeetCode Medium + First Hard Problem",           status: "Completed", link: "/day-23" },
+  { day: "Day 24", topic: "Real DE Query Patterns",                         status: "Completed", link: "/day-24" },
+  { day: "Day 25", topic: "SQL Dialects : Snowflake, BigQuery, PostgreSQL", status: "Completed", link: "/day-25" },
+  { day: "Day 26", topic: "DE Patterns : Deduplication, Slowly Changing Dims", status: "Completed", link: "/day-26" },
+  { day: "Day 27", topic: "Production SQL : dbt, Pipelines, Daily Queries", status: "Completed", link: "/day-27" },
+  { day: "Day 28", topic: "Mock Interview : Real Interview Questions",       status: "Completed", link: "/day-28" },
+  { day: "Day 29", topic: "Gap Review : Shore Up Weak Areas",               status: "Completed", link: "/day-29" },
+  { day: "Day 30", topic: "Final Mock : 90 Minutes, 10 Questions, No Notes",status: "Completed", link: "/day-30" },
+];
+
+const supplement = [
+  { day: "Day 31", topic: "Snowflake & BigQuery Deep Dive",                 status: "Completed", link: "/day-31" },
+  { day: "Day 32", topic: "dbt Fundamentals and SQL Transformations",       status: "Completed", link: "/day-32" },
+  { day: "Day 33", topic: "System Design for Data Engineers",               status: "Completed", link: "/day-33" },
+  { day: "Day 34", topic: "Portfolio Project : End-to-End SQL Pipeline",    status: "Completed", link: "/day-34" },
+  { day: "Day 35", topic: "Final Review and Next Steps",                    status: "Completed", link: "/day-35" },
 ];
 ---
 
 <Base>
   <section class="max-w-4xl mx-auto py-12 px-4 prose prose-lg">
-    <h1 class="text-center">26-Week DSA Plan</h1>
-    <p>This is my structured roadmap for ~26 Weeks of DSA prep. Split into two phases with weekly topics. I'll update statuses and links as I go.</p>
+    <h1 class="text-center">35-Day SQL Mastery Plan</h1>
+    <p>
+      This is my structured roadmap from absolute SQL zero to Data Engineer ready, covering
+      fundamentals, JOINs, window functions, CTEs, query optimization, and real-world DE patterns.
+      I'll update statuses and links as I go.
+    </p>
     <ul>
-      <li>✅ Phase 1: 18 weeks (Foundations)</li>
-      <li>✅ Phase 2: 8 weeks (Mastery)</li>
+      <li>📘 Phase 1 (Days 1–10): SQL Foundations (Absolute Beginner to Intermediate)</li>
+      <li>⚙️ Phase 2 (Days 11–20): Advanced SQL + Performance</li>
+      <li>🏋️ Phase 3 (Days 21–30): LeetCode Grind + Real DE Queries</li>
+      <li>🚀 Supplement (Days 31–35): DE Tools, dbt, and Portfolio Project</li>
     </ul>
 
-    <!-- Image for Phase 1 -->
-<img
-  src="/images/phase1-banner.png"
-  alt="Phase 1 Banner"
-  class="block mx-auto my-8 rounded-lg shadow-lg w-auto max-w-lg"
-/>
-
-    <h2>Phase 1: Foundations (Weeks 1–18)</h2>
-    <p>Goal: Build understanding of 17 LeetCode Explore Cards (~85–100 questions). ~2–2.5 questions/day with revision weeks.</p>
+    <!-- Phase 1 -->
+    <h2 class="mt-10">📘 Phase 1: SQL Foundations (Days 1–10)</h2>
+    <p>Goal: Go from zero to writing JOINs, subqueries, aggregations, and window functions confidently. LeetCode Easy problems mapped to each day.</p>
     <div class="overflow-x-auto mt-4">
       <table class="min-w-full text-sm divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th class="text-left px-4 py-2">Week</th>
+            <th class="text-left px-4 py-2">Day</th>
             <th class="text-left px-4 py-2">Topic</th>
             <th class="text-left px-4 py-2">Status</th>
-            <th class="text-left px-4 py-2">Link</th>
+            <th class="text-left px-4 py-2">Post</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100">
           {phase1.map(item => (
             <tr class="hover:bg-gray-50">
-              <td class="px-4 py-2">{item.week}</td>
+              <td class="px-4 py-2 font-medium">{item.day}</td>
               <td class="px-4 py-2">{item.topic}</td>
-              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : 'text-yellow-600'}`}>{item.status}</td>
+              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : item.status === 'In Progress' ? 'text-blue-600' : 'text-yellow-600'}`}>{item.status}</td>
               <td class="px-4 py-2">
                 {item.link ? (
                   <a href={item.link} class="text-blue-500 hover:underline">View Post</a>
@@ -81,30 +96,25 @@ const phase2 = [
       </table>
     </div>
 
-   <img
-  src="/images/phase2-banner.png"
-  alt="Phase 2 Banner"
-  class="block mx-auto my-8 rounded-lg shadow-lg w-auto max-w-lg"
-/>
-
-    <h2>Phase 2: Mastery (Weeks 19–26)</h2>
-    <p>Goal: Medium–Hard LeetCode patterns for FAANG-level readiness (~220 questions). 2 questions/day over 8 weeks with real interview patterns and revision.</p>
+    <!-- Phase 2 -->
+    <h2 class="mt-10">⚙️ Phase 2: Advanced SQL + Performance (Days 11–20)</h2>
+    <p>Goal: Master CTEs, recursive queries, NULL handling, indexes, EXPLAIN, and advanced analytical patterns used in real Data Engineering work.</p>
     <div class="overflow-x-auto mt-4">
       <table class="min-w-full text-sm divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th class="text-left px-4 py-2">Week</th>
+            <th class="text-left px-4 py-2">Day</th>
             <th class="text-left px-4 py-2">Topic</th>
             <th class="text-left px-4 py-2">Status</th>
-            <th class="text-left px-4 py-2">Link</th>
+            <th class="text-left px-4 py-2">Post</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100">
           {phase2.map(item => (
             <tr class="hover:bg-gray-50">
-              <td class="px-4 py-2">{item.week}</td>
+              <td class="px-4 py-2 font-medium">{item.day}</td>
               <td class="px-4 py-2">{item.topic}</td>
-              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : 'text-yellow-600'}`}>{item.status}</td>
+              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : item.status === 'In Progress' ? 'text-blue-600' : 'text-yellow-600'}`}>{item.status}</td>
               <td class="px-4 py-2">
                 {item.link ? (
                   <a href={item.link} class="text-blue-500 hover:underline">View Post</a>
@@ -118,18 +128,83 @@ const phase2 = [
       </table>
     </div>
 
-    <h2>Revision Strategy</h2>
+    <!-- Phase 3 -->
+    <h2 class="mt-10">🏋️ Phase 3: LeetCode Grind + Real DE Queries (Days 21–30)</h2>
+    <p>Goal: Crush LeetCode SQL Easy and Medium problems, practice real Data Engineering query patterns, and simulate actual interviews.</p>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="text-left px-4 py-2">Day</th>
+            <th class="text-left px-4 py-2">Topic</th>
+            <th class="text-left px-4 py-2">Status</th>
+            <th class="text-left px-4 py-2">Post</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {phase3.map(item => (
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 font-medium">{item.day}</td>
+              <td class="px-4 py-2">{item.topic}</td>
+              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : item.status === 'In Progress' ? 'text-blue-600' : 'text-yellow-600'}`}>{item.status}</td>
+              <td class="px-4 py-2">
+                {item.link ? (
+                  <a href={item.link} class="text-blue-500 hover:underline">View Post</a>
+                ) : (
+                  <span class="text-gray-400">Coming Soon</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Supplement -->
+    <h2 class="mt-10">🚀 Supplement: DE Tools + Portfolio (Days 31–35)</h2>
+    <p>Goal: Go beyond SQL. Learn Snowflake, BigQuery, dbt, system design for data, and build a portfolio project that ties everything together.</p>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="text-left px-4 py-2">Day</th>
+            <th class="text-left px-4 py-2">Topic</th>
+            <th class="text-left px-4 py-2">Status</th>
+            <th class="text-left px-4 py-2">Post</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {supplement.map(item => (
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 font-medium">{item.day}</td>
+              <td class="px-4 py-2">{item.topic}</td>
+              <td class={`px-4 py-2 font-semibold ${item.status === 'Completed' ? 'text-green-600' : item.status === 'In Progress' ? 'text-blue-600' : 'text-yellow-600'}`}>{item.status}</td>
+              <td class="px-4 py-2">
+                {item.link ? (
+                  <a href={item.link} class="text-blue-500 hover:underline">View Post</a>
+                ) : (
+                  <span class="text-gray-400">Coming Soon</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-10">📝 How I'm Tracking Progress</h2>
     <p>
-      At the end of every week, I will do a dedicated revision session. When I initially solve problems, if I find them hard to solve, I will put them in <strong>Revision Block 1</strong>. During weekly revision days, I will focus on solving Revision Block 1 problems.
+      Each day I write a blog post covering the day's concepts, key queries, and LeetCode problems solved.
+      Status updates from <strong>Upcoming</strong> → <strong>In Progress</strong> → <strong>Completed</strong> as I go.
     </p>
     <ul>
-      <li>If I can solve them confidently, I will move them to <strong>Revision Block 2</strong>.</li>
-      <li>If not, I will leave them in <strong>Block 1</strong> for another cycle.</li>
-      <li>At the <strong>end of each month</strong>, I will tackle <strong>Revision Block 2</strong>.</li>
-      <li>If I can solve them then, I will remove them from the list, showing I have truly learned them.</li>
+      <li>🟡 <strong>Upcoming</strong>: not started yet</li>
+      <li>🔵 <strong>In Progress</strong>: currently working on this</li>
+      <li>✅ <strong>Completed</strong>: post published, problems solved</li>
     </ul>
     <p>
-      This layered revision system will help me repeatedly practice the hardest problems until they stick.
+      LeetCode problems are mapped to each day's topic. Easy first, then Medium as the days progress,
+      with Hard problems introduced in Phase 3.
     </p>
   </section>
 </Base>
