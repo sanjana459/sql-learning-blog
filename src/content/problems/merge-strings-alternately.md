@@ -1,7 +1,7 @@
 ---
 title: "Merge Strings Alternately"
 slug: "merge-strings-alternately"
-date: 2025-07-28
+date: 2025-07-24
 difficulty: "Easy"
 tags: ["arrays", "strings", "two pointers"]
 leetcode: "https://leetcode.com/problems/merge-strings-alternately/"

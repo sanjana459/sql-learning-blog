@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "For Loop & Beyond: 34-Week DSA Journey",
+    "title": "For Loop & Beyond: 26-Week DSA Journey",
     "base_url": "http://localhost:4321",
     "base_path": "/",
     "trailing_slash": false,
@@ -19,7 +19,7 @@
   "metadata": {
     "meta_author": "Sanjana Reddy Gurrappagaru",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Follow my 34-week structured DSA journey with weekly posts, patterns, topics, and notes — For Loop & Beyond!"
+    "meta_description": "Follow my 26-week structured DSA journey with weekly posts, patterns, topics, and notes — For Loop & Beyond!"
   },
 
   "params": {

@@ -1,7 +1,7 @@
 ---
-title: "Hash Tables & Sets – Time & Space Complexity"
-meta_title: "Hash Maps & Sets in Python – Big‑O Operations"
-description: "Learn how Python dictionaries and sets work under the hood, analyze the Big‑O time and space complexity of operations, and compare hash tables with lists for optimal data access and storage."
+title: "Hash Tables & Sets - Time & Space Complexity"
+meta_title: "Hash Maps & Sets in Python - Big-O Operations"
+description: "Week 0 notes on how Python dicts and sets work under the hood, the Big-O of their operations, and when to use them over a list."
 date: 2025-07-21
 image: "/images/posts/hash-tables-cover.jpg"
 categories: ["basics"]
@@ -17,136 +17,91 @@ draft: false
     }
   </style>
 
+<div class="prose prose-tight max-w-none">
 
-## 🧠 Hash Table Basics
+Last of the Week 0 fundamentals, and probably the most useful one for speeding up solutions: hash tables. Dicts and sets are the tools that turn "search the list again" into "just look it up," so I wanted to understand what's actually happening underneath.
 
-* A **hash table** stores key-value pairs using a hash function to compute array indices, enabling fast access (`O(1)` on average).
-* A **hash function** converts a key into a fixed-size integer (hash code) that maps to an index in the underlying array.
-* **Collisions** happen when different keys hash to the same index; they're handled using:
-  - **Chaining** (linked lists at each index), or
-  - **Open addressing** (linear probing, quadratic probing, etc.).
-* Hash tables are used for efficient lookups, inserts, and deletes — essential in problems like:
-  - Frequency counting
-  - Caching
-  - Indexing
-* Python `set` is an **unordered collection of unique, hashable items**, backed by a hash table for `O(1)` operations.
-* Python `dict` (map) stores **key-value pairs using a hash table**:
-  - Keys must be **hashable** (immutable)
-  - Values can be any data type
-* Examples of **hashable (valid key)** types:
-  - `str`, `int`, and tuples of hashable elements
-* Examples of **unhashable (invalid key)** types:
-  - `list`, `dict`, `set` — all mutable and cannot be used as dictionary keys or set elements.
+## 🧠 Hash table basics
 
----
+- A **hash table** stores key-value pairs. A hash function computes an array index from the key, which is what gives you fast access (O(1) on average).
+- A **hash function** turns a key into a fixed-size integer (a hash code) that maps to an index in the underlying array.
+- **Collisions** happen when different keys hash to the same index. Two common ways to handle them:
+  - **Chaining**: a little linked list at each index.
+  - **Open addressing**: probe for the next open slot (linear, quadratic, etc.).
+- Hash tables power efficient lookups, inserts, and deletes, which is why they show up in frequency counting, caching, and indexing.
+- A Python `set` is an unordered collection of unique, hashable items, backed by a hash table for O(1) operations.
+- A Python `dict` stores key-value pairs, also in a hash table. Keys must be hashable (immutable), and values can be anything.
+- Hashable (valid keys): `str`, `int`, tuples of hashable elements.
+- Unhashable (invalid keys): `list`, `dict`, `set`, all mutable, so they can't be keys or set elements.
 
-## 🧪 Python Dictionary (Hash Map) – Big‑O Cheat Sheet
+## 🧪 Dictionary cheat sheet
 
-| Operation           | Time   | Space | Example                        |
-|---------------------|--------|--------|--------------------------------|
-| `d[k]` (get/set)    | O(1)   | O(1)   | val = d[key] or d[k] = v   |
-| `del d[k]`          | O(1)   | O(1)   | del d[key]                   |
-| `k in d`            | O(1)   | O(1)   | if k in d:                 |
-| `d.keys()` / `d.values()` | O(n) | O(n) | All keys/values                |
-| `len(d)`            | O(1)   | O(1)   | Number of items                |
-| `for k in d:`       | O(n)   | O(1)   | Iteration                      |
-| `copy = d.copy()`   | O(n)   | O(n)   | Shallow copy                   |
-| `clear()`           | O(1)   | O(1)   | Empties the dictionary         |
-| `d.update(...)`     | O(m)   | O(m)   | Merge another dict of size `m` |
+| Operation | Time | Space | Example |
+|-----------|------|-------|---------|
+| `d[k]` (get/set) | O(1) | O(1) | `val = d[key]` or `d[k] = v` |
+| `del d[k]` | O(1) | O(1) | `del d[key]` |
+| `k in d` | O(1) | O(1) | `if k in d:` |
+| `d.keys()` / `d.values()` | O(n) | O(n) | All keys or values |
+| `len(d)` | O(1) | O(1) | Number of items |
+| `for k in d:` | O(n) | O(1) | Iteration |
+| `copy = d.copy()` | O(n) | O(n) | Shallow copy |
+| `d.clear()` | O(1) | O(1) | Empties the dict |
+| `d.update(...)` | O(m) | O(m) | Merge another dict of size `m` |
 
----
+## 🧪 Set cheat sheet
 
-## 🧪 Python Set – Big‑O Cheat Sheet
+| Operation | Time | Space | Example |
+|-----------|------|-------|---------|
+| `x in s` | O(1) | O(1) | `if x in s:` |
+| `s.add(x)` | O(1) | O(1) | Add an element |
+| `s.remove(x)` | O(1) | O(1) | Remove (errors if missing) |
+| `s.discard(x)` | O(1) | O(1) | Safe remove (no error) |
+| `s.pop()` | O(1) | O(1) | Remove and return an item |
+| `len(s)` | O(1) | O(1) | Count elements |
+| `copy = s.copy()` | O(n) | O(n) | Shallow copy |
+| Iteration | O(n) | O(1) | `for x in s:` |
+| Set operations | O(n) | O(n) | Union, intersection, difference |
 
-| Operation           | Time   | Space | Example                      |
-|---------------------|--------|--------|------------------------------|
-| `x in s`            | O(1)   | O(1)   | if x in s:                   |
-| `s.add(x)`          | O(1)   | O(1)   | Add element                  |
-| `s.remove(x)`       | O(1)   | O(1)   | Remove element               |
-| `s.discard(x)`      | O(1)   | O(1)   | Safe remove (no error)       |
-| `s.pop()`           | O(1)   | O(1)   | Remove and return an item    |
-| `len(s)`            | O(1)   | O(1)   | Count elements               |
-| `copy = s.copy()`   | O(n)   | O(n)   | Shallow copy                 |
-| ` Iteration`        | O(n)   | O(1)   | for x in s:                  | 
-| `Set operations`.   | O(n)   | O(n)   | Union, intersection, diff    |
+## 🔍 Hash map vs list: when to use which
 
----
+| Use case | dict or set | list |
+|----------|-------------|------|
+| Lookup by key | fast | slow, O(n) |
+| Ordered sequence | not guaranteed | yes |
+| Index-based access | no | yes |
+| Duplicate values | allowed (dict) | allowed |
+| Enforce uniqueness | use a set | must filter yourself |
+| Insert/remove lots | fast (amortized) | slower |
 
-## 🔍 Hash Map vs List – When to Use
+Rule of thumb: if I'm accessing values by a key, I reach for a dict or set over a list every time.
 
-| Use Case                         | Use `dict` or `set` | Use `list`        |
-|----------------------------------|----------------------|-------------------|
-| Lookup by key                    | ✅ Fast              | ❌ Slow (O(n))    |
-| Ordered sequence of elements     | ❌ Not guaranteed    | ✅ Yes            |
-| Index-based access               | ❌ No                | ✅ Yes            |
-| Duplicate values                 | ✅ Allowed (`dict`)  | ✅ Allowed        |
-| Need uniqueness enforcement      | ✅ Use `set`         | ❌ Must filter    |
-| Insert/remove many elements      | ✅ Fast (amortized)  | ❌ Slower         |
+## 🗂️ Dictionary quick reference
 
-> 🧠 **Best Practice**: If you're accessing values by a key, always prefer a `dict` or `set` over a list for performance.
+**Create**: `d = {}`, `d = {'a': 1}`, `d = dict(x=10)`, or `d = dict([('a', 1)])`.
 
----
+**Insert/update**: `d[key] = value`.
 
-## 🗂️ Python Dictionary (dict) — Master Guide
+**Access**: `d[key]` raises `KeyError` if missing, so `d.get(key, default)` is the safe version.
 
-🔹 **1. Declaration / Initialization**
-* Use `{}` or `dict()` to create a dictionary.
-  - `d = {}` → Empty dict
-  - `d = {'a': 1, 'b': 2}` → With initial values
-  - `d = dict(x=10, y=20)` → Using keyword arguments
-  - `d = dict([('a', 1), ('b', 2)])` → From key-value pairs
+**Membership**: `if 'key' in d:`.
 
-🔹 **2. Insertion / Update**
-* Use `d[key] = value` to insert or update a key.
-  - Example: `d['z'] = 99` adds or updates key `'z'`.
+**Delete**: `del d[key]`, or `d.pop(key)` to get the value back, or `d.clear()` to wipe it.
 
-🔹 **3. Access / Lookup**
-* Use `d[key]` to get the value — raises `KeyError` if key not found.
-* Use `d.get(key, default)` to safely access — returns `default` if key not present.
-  - Example: `d.get('x', 0)`
+**Iterate**: `for key in d`, `for value in d.values()`, `for key, value in d.items()`.
 
-🔹 **4. Membership Test**
-* Use `'key' in d` to check if a key exists.
-  - Example: `if 'x' in d: print(d['x'])`
+**From a sequence**: `dict.fromkeys(['a', 'b'], 0)` gives `{'a': 0, 'b': 0}`.
 
-🔹 **5. Deletion**
-* `del d[key]` → Removes key, raises `KeyError` if missing.
-* `d.pop(key)` → Removes key and returns value.
-* `d.clear()` → Empties the entire dictionary.
+**Key rules**: keys must be hashable and immutable. `str`, `int`, `tuple` are fine, `list`, `set`, `dict` are not.
 
-🔹 **6. Length**
-* `len(d)` → Returns the number of key-value pairs.
+## 💡 Interview notes to self
 
-🔹 **7. Copying**
-* `d2 = d.copy()` → Shallow copy (keys and values copied, nested objects shared).
+- Always mention average vs worst-case time for dict and set. Average is O(1), but collisions make the worst case O(n).
+- Collisions are rare but real, so avoid weird custom key types unless they're properly hashable.
+- Python dicts keep insertion order since 3.7, which is handy when order actually matters.
 
-🔹 **8. Merging / Updating**
-* `d.update(other_dict)` → Adds or updates entries from `other_dict`.
+## 📝 What I want to remember
 
-🔹 **9. Iteration**
-* `for key in d:` → Iterate over keys.
-* `for value in d.values():` → Iterate over values.
-* `for key, value in d.items():` → Iterate over key-value pairs.
+Dicts and sets give O(1) average lookup, insert, and delete, at the cost of extra memory. That trade is almost always worth it when I'm asking "have I seen this key before." When order or index access matters, that's when a list wins.
 
-🔹 **10. Views**
-* `d.keys()` → Returns a view of keys.
-* `d.values()` → Returns a view of values.
-* `d.items()` → Returns a view of (key, value) pairs.
-
-🔹 **11. Dictionary from Sequence**
-* `dict.fromkeys(seq, val)` → Creates dict from keys in `seq` with all values set to `val`.
-  - Example: `dict.fromkeys(['a', 'b'], 0)` → `{'a': 0, 'b': 0}`
-
-🔹 **12. Key Rules**
-* Keys must be **hashable** and **immutable**:
-  - ✅ Valid: `str`, `int`, `tuple`
-  - ❌ Invalid: `list`, `set`, `dict`
----
-
-## 💡 Interview Tip
-
-- Always mention average vs worst-case time for dict/set in Python.
-- Hash collisions, although rare, exist — avoid using non-primitive or custom types unless hashable.
-- Python dictionaries preserve insertion order since 3.7 — useful when order matters.
-
+</div>
 </div>

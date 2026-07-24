@@ -1,8 +1,8 @@
 ---
-title: "Sliding Window Algorithm – Fixed & Variable Length"
+title: "Sliding Window Algorithm - Fixed & Variable Length"
 meta_title: "Sliding Window Pattern for Subarrays & Substrings"
-description: "Master the sliding window technique for solving subarray and substring problems. Learn when to use fixed vs variable windows, common patterns, and how to optimize with two-pointer strategies."
-date: 2025-07-21
+description: "Week 0 notes on the sliding window: when to use it, fixed vs variable windows, and how it turns a lot of subarray and substring problems from O(n^2) into O(n)."
+date: 2025-07-23
 image: "/images/posts/sliding-window-cover.jpg"
 categories: ["patterns"]
 tags: ["sliding window", "arrays", "substrings", "subarrays", "techniques"]
@@ -17,70 +17,77 @@ draft: false
     }
   </style>
 
-## 📌 When to Use Sliding Window
+<div class="prose prose-tight max-w-none">
 
-- If a problem asks for:
-  - Longest/shortest subarray with a condition
-  - Fixed-length sum/subarray
-  - Substring problems with characters/frequency
-- And constraints mention:
-  - Positive integers or lowercase letters
-  - Contiguous window
-- Then **Sliding Window** is your go-to strategy.
+First real pattern of the journey. The sliding window is the one I reach for on subarray and substring problems, and the payoff is big: it usually takes an O(n^2) brute force down to O(n).
 
-> 🔍 **Keyword Clue**: Subarray / Substring  
-> 🧠 **Technique Hint**: Start with two pointers → expand → shrink
+## 📌 When I reach for it
 
----
+If the problem is asking for:
 
-## 🪟 Sliding Window Types
+- the longest or shortest subarray that satisfies some condition,
+- a fixed-length sum or subarray,
+- a substring based on characters or their frequency,
 
-| Type            | Use Case Example                                  | Window Behavior              |
-|-----------------|---------------------------------------------------|------------------------------|
-| Fixed Length    | Max sum of k elements                             | Always move right pointer k  |
-| Variable Length | Longest substring with at most 2 distinct chars   | Expand + shrink based on rule|
+and the constraints mention contiguous ranges, positive integers, or lowercase letters, that's my cue.
 
----
+The keyword clue is "subarray" or "substring." The mental move is two pointers: expand the window, then shrink it.
 
-## 🔒 Fixed-Length Window
+## 🪟 Two flavors
 
-Use when you're given a fixed window size `k` and need to compute something over every window of size `k`.
+| Type | Example use case | Window behavior |
+|------|------------------|-----------------|
+| Fixed length | Max sum of k elements | Always slide the right pointer by k |
+| Variable length | Longest substring with at most 2 distinct chars | Expand, then shrink based on a rule |
 
-✅ Constant time to slide window: `+arr[i] - arr[i-k]`  
-✅ Efficient for problems involving sums or frequency over exact-sized windows
+## 🔒 Fixed-length window
 
----
+Use this when you're handed a window size `k` and need to compute something over every window of that size. The trick is that sliding is O(1): add the new element, drop the one that fell off.
 
-## 🔓 Variable-Length Window
+```python
+def max_sum_k(nums, k):
+    window = sum(nums[:k])
+    best = window
+    for i in range(k, len(nums)):
+        window += nums[i] - nums[i - k]   # add new, remove old
+        best = max(best, window)
+    return best
+```
 
-Use two pointers (`start`, `end`) to dynamically expand and shrink the window depending on conditions.
+## 🔓 Variable-length window
 
-✅ Great for problems where you don't know the window size up front  
-✅ Use when constraints say things like:
-- "at most K characters"
-- "longest subarray with sum ≤ target"
-- "substring with K distinct characters"
+Here you don't know the size up front, so you use two pointers (`start` and `end`) and grow or shrink based on a condition. It fits problems phrased like "at most K characters," "longest subarray with sum ≤ target," or "substring with K distinct characters."
 
----
+```python
+def longest_at_most_k_distinct(s, k):
+    from collections import defaultdict
+    count = defaultdict(int)
+    start = best = 0
+    for end, ch in enumerate(s):
+        count[ch] += 1
+        while len(count) > k:            # shrink until the rule holds again
+            count[s[start]] -= 1
+            if count[s[start]] == 0:
+                del count[s[start]]
+            start += 1
+        best = max(best, end - start + 1)
+    return best
+```
 
-💡 **Key Insight**
+## 💡 The signal
 
-When you see problems like:
+When I see "subarray" or "substring," together with words like sum, max, min, count, a length `k`, or "at most" / "exactly," I stop and think sliding window before writing any nested loops.
 
-- "subarray", "substring"  
-- Sum, max/min, count  
-- Length `k`, or conditions like "at most" or "exactly"
+## 🏋️ Good problems to practice on
 
-✅ **Think Sliding Window!**
+- [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/), Easy (fixed)
+- [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/), Medium (variable)
+- [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/), Medium
+- [Permutation in String](https://leetcode.com/problems/permutation-in-string/), Medium
 
----
+## 📝 What I want to remember
 
-🧠 **Sliding Window Patterns**
+Fixed window: slide by one, add the new element and remove the old one, O(1) per step. Variable window: expand the right, shrink the left whenever the condition breaks. Both stay O(n) because each element enters and leaves the window at most once.
 
-| Pattern                      | Strategy Description                |
-|-----------------------------|--------------------------------------|
-| Fixed window of size `k`    | Slide right pointer, remove left     |
-| Longest subarray with sum   | Expand with end, shrink with start   |
-| Substring with distinct chars | Use hashmap to track frequency       |
-
+</div>
 </div>

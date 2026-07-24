@@ -1,7 +1,7 @@
 ---
 title: "Is Subsequence"
 slug: "is-subsequence"
-date: 2025-07-28
+date: 2025-07-22
 difficulty: "Easy"
 tags: ["substrings", "two pointers"]
 leetcode: "https://leetcode.com/problems/is-subsequence/"
@@ -106,8 +106,8 @@ class Solution(object):
 
 ## 📊 Complexities
 
-- **Time Complexity:** `O(n)` — where `n = len(t)`  
-- **Space Complexity:** `O(1)` — uses constant extra space
+- **Time Complexity:** `O(n)`, where `n = len(t)`
+- **Space Complexity:** `O(1)`, just a couple of pointers
 
 ---
 

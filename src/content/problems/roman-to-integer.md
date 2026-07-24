@@ -1,7 +1,7 @@
 ---
 title: "Roman to Integer"
 slug: "roman-to-integer"
-date: 2025-07-28
+date: 2025-07-26
 difficulty: "Easy"
 tags: ["strings", "hash tables", "linear scan"]
 leetcode: "https://leetcode.com/problems/roman-to-integer/"
@@ -115,8 +115,8 @@ return summ
 
 ## 📊 Complexities
 
-- **Time Complexity:** `O(n)` — where `n` is the length of the string `s`
-- **Space Complexity:** `O(1)` — dictionary is constant size
+- **Time Complexity:** `O(n)`, where `n` is the length of the string `s`
+- **Space Complexity:** `O(1)`, the dictionary is a fixed size
 
 ---
 

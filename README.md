@@ -2,7 +2,7 @@
 
 Hey there! 👋  
 Hi there,  
-Welcome to **For Loop and Beyond** - a 153-day blog series where I am documenting a structured journey through Data Structures and Algorithms.
+Welcome to **For Loop and Beyond** - a 26-week blog series where I am documenting a structured journey through Data Structures and Algorithms.
 
 This isn’t just about solving problems. It’s about building consistency, recognizing patterns, and sharpening your thinking for interviews and real-world development. Each week focuses on a different DSA topic, with notes, patterns, and problem breakdowns.
 

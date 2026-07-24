@@ -1,8 +1,8 @@
 ---
-title: "Two Pointers Algorithm – Intuition & Patterns"
+title: "Two Pointers Algorithm - Intuition & Patterns"
 meta_title: "DSA Pattern: Two Pointers (Squeeze Technique)"
-description: "Understand the two pointers technique and how it simplifies array and string problems by reducing nested loops. Learn key patterns, types of pointer movement, and when to apply this strategy effectively."
-date: 2025-07-21
+description: "Week 0 notes on the two pointers technique: the 'squeeze' idea that kills a lot of nested loops, the two movement styles, and when to actually use it."
+date: 2025-07-25
 image: "/images/posts/two-pointers-cover.jpg"
 categories: ["patterns"]
 tags: ["two pointers", "arrays", "strings", "techniques"]
@@ -17,48 +17,58 @@ draft: false
     }
   </style>
 
-## 🧠 What is the Two Pointers Technique?
+<div class="prose prose-tight max-w-none">
 
-*The two pointers algorithm* uses two indices that move towards each other (or in the same direction) to scan through data — typically an array or string — to find solutions faster than nested loops.
+Second pattern, and it's a close cousin of the sliding window. Two pointers uses two indices moving through the data to find answers faster than nested loops would.
 
-> I like to call this the **squeeze algorithm** — because the pointers "squeeze" the problem space from both ends until the condition is met.
+## 🧠 What it is
 
----
+Two pointers means two indices that move toward each other, or in the same direction, to scan an array or string. I like to think of it as the **squeeze**: the pointers close in on the answer from both ends until the condition is met. That mental picture is what makes it stick for me.
 
-## 🔍 Where is it Used?
+```python
+def is_palindrome(s):
+    i, j = 0, len(s) - 1
+    while i < j:
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+```
 
-- Sorted arrays (common in questions asking for pair sums)
-- Strings or arrays with substructure (e.g., palindromes, reverse operations)
-- Finding or optimizing subarrays or subsequences
-- Eliminating nested loops when scanning with start-end pairs
+## 🔍 Where it shows up
 
----
+- Sorted arrays, especially "find a pair that sums to X."
+- Strings or arrays with symmetry, like palindromes or reversals.
+- Finding or optimizing subarrays and subsequences.
+- Anywhere I'd otherwise write a nested loop comparing two positions.
 
-## 🧩 Types of Movement
+## 🧩 The two movement styles
 
-1. **Same Direction**  
-   - Start both pointers at the beginning  
-   - Example: slow/fast runners, merging sorted arrays
+**Same direction** (a slow and a fast pointer). Good for merging sorted arrays or the runner-style problems.
 
-2. **Opposite Direction**  
-   - One pointer at start, the other at end  
-   - Ideal for sum-based or palindrome problems
+**Opposite direction** (one at the start, one at the end). Ideal for sum-based and palindrome problems, where you nudge whichever pointer moves you toward the target.
 
----
+## 🪄 Why it works
 
-## 🪄 Why it Works
+- It often drops the time from O(n^2) to O(n).
+- It plays really well with sorted data, or any problem where left/right symmetry helps.
+- It's simple to write but surprisingly powerful once you spot the right pairing.
 
-- Reduces time complexity from O(n²) to O(n) in many problems
-- Works well with sorted data or problems where left/right symmetry helps
-- Simple to implement but powerful when identifying the correct window or combination
+## 💡 The signal
 
----
+If my brute-force idea is a nested loop comparing two values at a time, I stop and ask whether those comparisons could be done by moving two pointers instead. Usually the answer is yes, and it's cleaner and lighter on space.
 
-## 💡 Key Insight
+## 🏋️ Good problems to practice on
 
-If a brute-force solution requires nested loops comparing two values at a time — think if those comparisons can be done **by moving two pointers instead**.
+- [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/), Easy
+- [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/), Medium
+- [Container With Most Water](https://leetcode.com/problems/container-with-most-water/), Medium
+- [3Sum](https://leetcode.com/problems/3sum/), Medium
 
-✅ Efficient  
-✅ Clean logic  
-✅ Lower space usage  
+## 📝 What I want to remember
+
+Two indices, squeezing toward the answer. Same direction for merging and runners, opposite direction for sums and palindromes. Whenever I catch myself about to nest two loops on the same array, that's the moment to try two pointers.
+
+</div>
 </div>
